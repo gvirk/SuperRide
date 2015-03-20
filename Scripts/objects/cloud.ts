@@ -1,19 +1,18 @@
 ﻿module objects {
-    // ISLAND CLASS
-    export class Island extends objects.GameObject{
+    // CLOUD CLASS
+    export class Cloud extends objects.GameObject {
 
         // CONSTRUCTOR
         constructor() {
-            super("island");
-            this.sound = "yay";
-            this._dy = 5;
-
+            super("cloud");
+            this.sound = "thunder";
             this.reset();
         }
 
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
         public update() {
             this.y += this._dy;
+            this.x += this._dx;
 
             this._checkBounds();
         }
@@ -22,6 +21,8 @@
         public reset() {
             this.y = -this.height;
             this.x = Math.floor(Math.random() * 640);
+            this._dy = Math.floor(Math.random() * 5) + 5;
+            this._dx = Math.floor(Math.random() * 4) - 2;
         }
 
         // PRIVATE METHODS +++++++++++++++++++++++++++++++++++++++++
@@ -34,4 +35,4 @@
 
     }
 
-} 
+}  

@@ -6,35 +6,35 @@ var __extends = this.__extends || function (d, b) {
 };
 var objects;
 (function (objects) {
-    // ISLAND CLASS
-    var Island = (function (_super) {
-        __extends(Island, _super);
+    // OCEAN CLASS
+    var Ocean = (function (_super) {
+        __extends(Ocean, _super);
         // CONSTRUCTOR
-        function Island() {
-            _super.call(this, "island");
-            this.sound = "yay";
+        function Ocean() {
+            _super.call(this, assetLoader.getResult("ocean"));
+            // PUBLIC INSTANCE VARIABLES
             this._dy = 5;
             this.reset();
         }
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
-        Island.prototype.update = function () {
+        Ocean.prototype.update = function () {
             this.y += this._dy;
             this._checkBounds();
         };
         // Reset position of island to the top
-        Island.prototype.reset = function () {
-            this.y = -this.height;
-            this.x = Math.floor(Math.random() * 640);
+        Ocean.prototype.reset = function () {
+            this.y = -960;
+            this.x = 0;
         };
         // PRIVATE METHODS +++++++++++++++++++++++++++++++++++++++++
-        Island.prototype._checkBounds = function () {
+        Ocean.prototype._checkBounds = function () {
             // check if island has left the bottom of the screen
-            if (this.y >= (480 + this.height)) {
+            if (this.y === 0) {
                 this.reset();
             }
         };
-        return Island;
-    })(objects.GameObject);
-    objects.Island = Island;
+        return Ocean;
+    })(createjs.Bitmap);
+    objects.Ocean = Ocean;
 })(objects || (objects = {}));
-//# sourceMappingURL=island.js.map
+//# sourceMappingURL=ocean.js.map
