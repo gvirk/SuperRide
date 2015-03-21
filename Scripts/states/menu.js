@@ -14,6 +14,7 @@ var states;
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         function Menu() {
             this.play = false;
+            this.instructions = false;
             // Instantiate Game Container
             this.game = new createjs.Container();
             //Ocean object
@@ -32,14 +33,21 @@ var states;
             this.game.addChild(this.mailPilotLabel);
             */
             //Play Button
-            this.playButton = new objects.Button(475, 360, "playButton");
+            this.playButton = new objects.Button(600, 360, "playButton");
             this.playButton.on("click", this.playClicked, this);
             this.game.addChild(this.playButton);
+            //Instructions Button
+            this.instructionsButton = new objects.Button(350, 360, "instructionsLogo");
+            this.instructionsButton.on("click", this.instructionsClicked, this);
+            this.game.addChild(this.instructionsButton);
             // Add Game Container to Stage
             stage.addChild(this.game);
         } // Constructor
         Menu.prototype.playClicked = function () {
             this.play = true;
+        };
+        Menu.prototype.instructionsClicked = function () {
+            this.instructions = true;
         };
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         Menu.prototype.update = function () {
@@ -48,6 +56,12 @@ var states;
                 this.game.removeAllChildren();
                 stage.removeChild(this.game);
                 currentState = constants.PLAY_STATE;
+                stateChanged = true;
+            }
+            if (this.instructions) {
+                this.game.removeAllChildren();
+                stage.removeChild(this.game);
+                currentState = constants.INSTRUCTIONS_STATE;
                 stateChanged = true;
             }
             stage.update(); // Refreshes our stage

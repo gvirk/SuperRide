@@ -38,6 +38,7 @@ var stateChanged: boolean = false;
 var gamePlay: states.GamePlay;
 var gameOver: states.GameOver;
 var menu: states.Menu;
+var instructions: states.Instructions;
 
 
 var manifest = [
@@ -47,6 +48,8 @@ var manifest = [
     { id: "plane", src: "assets/images/spaceship.png" },
     { id: "playButton", src: "assets/images/playGameButton.png" },
     { id: "tryAgainButton", src: "assets/images/playAgainButton.png" },
+    { id: "instructionsLogo", src: "assets/images/instructionsLogo.png" },
+    { id: "instruction", src: "assets/images/instructions.png" },
     { id: "engine", src: "assets/audio/star.ogg" },
     { id: "yay", src: "assets/audio/powerup.wav" },
     { id: "thunder", src: "assets/audio/collision.wav" }
@@ -108,6 +111,12 @@ function changeState(state: number): void {
             // instantiate menu screen
             menu = new states.Menu();
             currentStateFunction = menu;
+            break;
+
+        case constants.INSTRUCTIONS_STATE:
+            //instantiate instructions screen
+            instructions = new states.Instructions();
+            currentStateFunction = instructions;
             break;
 
         case constants.PLAY_STATE:

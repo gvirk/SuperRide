@@ -22,6 +22,7 @@ var objects;
         }
         // PUBLIC METHODS
         Plane.prototype.update = function () {
+            this.x = stage.mouseX;
             this.y = stage.mouseY;
         };
         return Plane;

@@ -17,9 +17,10 @@ module states {
         public ocean: objects.Ocean;
         public mailPilotLabel: objects.Label;
         public playButton: objects.Button;
+        public instructionsButton: objects.Button;
 
         public play: boolean = false;
-
+        public instructions: boolean = false;
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         constructor() {
             
@@ -46,10 +47,14 @@ module states {
             */
 
             //Play Button
-            this.playButton = new objects.Button(475, 360, "playButton");
+            this.playButton = new objects.Button(600, 360, "playButton");
             this.playButton.on("click", this.playClicked, this);
-
             this.game.addChild(this.playButton);
+
+            //Instructions Button
+            this.instructionsButton = new objects.Button(350, 360, "instructionsLogo");
+            this.instructionsButton.on("click", this.instructionsClicked, this);
+            this.game.addChild(this.instructionsButton);
 
             // Add Game Container to Stage
             stage.addChild(this.game);
@@ -59,6 +64,9 @@ module states {
             this.play = true;
         }
 
+        public instructionsClicked() {
+            this.instructions = true;
+        }
 
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         public update() {
@@ -72,6 +80,12 @@ module states {
                 stateChanged = true;
             }
 
+            if (this.instructions) {
+                this.game.removeAllChildren();
+                stage.removeChild(this.game);
+                currentState = constants.INSTRUCTIONS_STATE;
+                stateChanged = true;
+            }
             stage.update(); // Refreshes our stage
 
         } // Update Method

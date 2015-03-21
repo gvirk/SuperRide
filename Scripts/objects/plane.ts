@@ -20,7 +20,7 @@ module objects {
 
         // PUBLIC METHODS
         public update() {
-            
+            this.x = stage.mouseX;
             this.y = stage.mouseY;
         }
 
