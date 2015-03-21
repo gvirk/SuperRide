@@ -17,6 +17,7 @@ module states {
         public ocean: objects.Ocean;
         public mailPilotLabel: objects.Label;
         public playButton: objects.Button;
+
         public play: boolean = false;
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -30,16 +31,22 @@ module states {
             this.ocean = new objects.Ocean();
             this.game.addChild(this.ocean);
 
-            //Game Over Label
-            this.mailPilotLabel = new objects.Label(320, 40, "MAIL PILOT");
+            //Game Logo
+            var logo = new createjs.Bitmap("assets/images/logo.png");
+            logo.x = 350;
+            logo.y = 30;
+            this.game.addChild(logo);
+
+            /*
+            this.mailPilotLabel = new objects.Label(500, 60, "MAIL PILOT");
             this.mailPilotLabel.font = "60px Consolas";
             this.mailPilotLabel.regX = this.mailPilotLabel.getMeasuredWidth() * 0.5;
             this.mailPilotLabel.regY = this.mailPilotLabel.getMeasuredLineHeight() * 0.5;
             this.game.addChild(this.mailPilotLabel);
-
+            */
 
             //Play Button
-            this.playButton = new objects.Button(320, 280, "playButton");
+            this.playButton = new objects.Button(475, 360, "playButton");
             this.playButton.on("click", this.playClicked, this);
 
             this.game.addChild(this.playButton);

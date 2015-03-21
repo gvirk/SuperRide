@@ -20,19 +20,20 @@ var states;
             this.ocean = new objects.Ocean();
             this.game.addChild(this.ocean);
             //Game Over Label
-            this.gameOverLabel = new objects.Label(320, 40, "GAME OVER");
-            this.gameOverLabel.font = "60px Consolas";
-            this.gameOverLabel.regX = this.gameOverLabel.getMeasuredWidth() * 0.5;
-            this.gameOverLabel.regY = this.gameOverLabel.getMeasuredLineHeight() * 0.5;
-            this.game.addChild(this.gameOverLabel);
+            var gameOverLogo = new createjs.Bitmap("assets/images/gameOver.png");
+            gameOverLogo.x = 350;
+            gameOverLogo.y = 30;
+            this.game.addChild(gameOverLogo);
             //Final Score Label
-            this.finalScoreLabel = new objects.Label(320, 120, ("FINAL SCORE: " + currentScore));
+            this.finalScoreLabel = new objects.Label(475, 150, ("FINAL SCORE: " + currentScore));
+            this.finalScoreLabel.color = "red";
             this.game.addChild(this.finalScoreLabel);
             //High Score Label
-            this.highScoreLabel = new objects.Label(320, 200, ("HIGH SCORE: " + highScore));
+            this.highScoreLabel = new objects.Label(475, 230, ("HIGH SCORE: " + highScore));
+            this.highScoreLabel.color = "red";
             this.game.addChild(this.highScoreLabel);
             //Try Again Button
-            this.tryAgainButton = new objects.Button(320, 280, "tryAgainButton");
+            this.tryAgainButton = new objects.Button(475, 360, "tryAgainButton");
             this.tryAgainButton.on("click", this.tryAgainClicked, this);
             this.game.addChild(this.tryAgainButton);
             // Add Game Container to Stage

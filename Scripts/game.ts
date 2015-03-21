@@ -39,16 +39,17 @@ var gamePlay: states.GamePlay;
 var gameOver: states.GameOver;
 var menu: states.Menu;
 
+
 var manifest = [
-    { id: "cloud", src: "assets/images/cloud.png" },
-    { id: "island", src: "assets/images/island.png" },
-    { id: "ocean", src: "assets/images/ocean.gif" },
-    { id: "plane", src: "assets/images/plane.png" },
-    { id: "playButton", src: "assets/images/playButton.png" },
-    { id: "tryAgainButton", src: "assets/images/tryAgainButton.png" },
-    { id: "engine", src: "assets/audio/engine.ogg" },
-    { id: "yay", src: "assets/audio/yay.ogg" },
-    { id: "thunder", src: "assets/audio/thunder.ogg" }
+    { id: "cloud", src: "assets/images/asteroid.png" },
+    { id: "island", src: "assets/images/planet.png" },
+    { id: "ocean", src: "assets/images/space.png" },
+    { id: "plane", src: "assets/images/spaceship.png" },
+    { id: "playButton", src: "assets/images/playGameButton.png" },
+    { id: "tryAgainButton", src: "assets/images/playAgainButton.png" },
+    { id: "engine", src: "assets/audio/star.ogg" },
+    { id: "yay", src: "assets/audio/powerup.wav" },
+    { id: "thunder", src: "assets/audio/collision.wav" }
 ];
 
 
@@ -79,7 +80,7 @@ function setupStats() {
     // align top-left
     stats.domElement.style.position = 'absolute';
     stats.domElement.style.left = '650px';
-    stats.domElement.style.top = '440px';
+    stats.domElement.style.top = '450px';
 
     document.body.appendChild(stats.domElement);
 }
